@@ -124,14 +124,14 @@ console.log("1" / "1"); // 1
 console.log(typeof ("1" - "1")); // number
 console.log(typeof ("1" + "1")); // string
 
-// STRING TEMPLATE
+// STRING TEMPLATE  ======================================================================
 // - It lets us insert variables and expressions with the strings without needing to concatenate like in older versions of JavaScript.
 // By string concatenation
 console.log("My name is " + firstName + " and i am " + age + " years old.");
 // By template string
 console.log(`My name is ${firstName} and i am ${age} years old.`);
 
-// undefined DATA TYPE
+// undefined DATA TYPE  ==================================================================
 // - variable with no data asssigned to it
 // - var firstName;
 // - let lastName;
@@ -139,13 +139,13 @@ console.log(`My name is ${firstName} and i am ${age} years old.`);
 // - we can assign values later, to the undefined variable
 console.log(typeof undefined); // undefined
 
-// null DATA TYPE
+// null DATA TYPE   ======================================================================
 // - variable with null value assigned to it
 // - null means empty/unknown value
 // - It is treated as falsy for boolean expressions
 console.log(typeof null); // Object
 
-// bigint DATA TYPE
+// bigint DATA TYPE ======================================================================
 // - The number in JS has a limit to store the numbers
 console.log(Number.MAX_SAFE_INTEGER); // 9007199254740991
 // - So, Number can store only 9007199254740991 intergers
@@ -156,3 +156,131 @@ console.log(typeof bigIntVariable); // bigint
 console.log(typeof bigIntVariable2); // bigint
 // - we can perform any operations with bigint
 // - we cannot mix bigint with other data types
+
+// BOOLEANS and COMPARISON OPERATORS    ==================================================
+// - The Comparison operators are used to compare values and the result of the comparison is in Boolean [True/False]
+let hasDl;
+console.log(typeof hasDl); // Undefined
+hasDl = true;
+console.log(typeof hasDl); // Boolean
+// Another Example
+let num1 = 1;
+let num2 = 2;
+console.log(num1 > num2); // false
+console.log(num2 > num1); // true
+
+// == vs ===
+// == is equality operator which checks only the value and not the data type
+// === is strict equality checker which checks both, value and data types
+num1 = "7";
+num2 = 7;
+console.log(num1 == num2); // returns true, but "7" is not same as 7
+console.log(num1 === num2); // returns false, cuz "7" is not strictly equal to 7
+
+// != vs !==
+console.log(num1 != num2); // false
+console.log(num1 !== num2); // true
+
+// TRUTHY AND FALSY VALUES  ==============================================================
+// Falsy values
+// - false
+// - 0
+// - "" [Note: "" is flasy and " " is truthy]
+// - null
+// - undefined are the falsy values
+
+// Truthy values are all the values except for the falsy values
+
+// if STATEMENT ==========================================================================
+// - The if statement is used to check the condition
+// - if, the condition is true the block of code will be executed else nothing will happen
+age = 18;
+if (age >= 18) {
+  console.log("You can drive!");
+}
+
+// if-else STATEMENT    ==================================================================
+// When the stmt is true, if block will be exectued otherwise else block will be executed
+if (age >= 18) {
+  console.log("you can drive!");
+} else {
+  console.log("cannot drive");
+}
+
+// if-else if STATEMENT ==================================================================
+// - When we need to make decisions based on multiple conditions, we use this
+if (age < 18) {
+  console.log("You are below 18");
+} else if (age <= 60) {
+  console.log("You can drive!");
+} else if (age > 60) {
+  console.log("You are too old to be driving!");
+} else {
+  console.log("Invalid input");
+}
+
+// Nested if-else
+let userGuess = 19; // user input
+let winningNumber = 19;
+if (userGuess === winningNumber) {
+  console.log("You guessed it right!!!");
+} else {
+  if (userGuess > winningNumber) {
+    console.log("too high!");
+  } else {
+    console.log("too low");
+  }
+}
+// o/p => "You guessed it right!!!"
+
+// SWITCH STATEMENT ======================================================================
+// - It is same as if else if else.
+// - The switch statement starts with a switch keyword followed by a parenthesis and code block.
+// - Inside the code block we will have different cases.
+// - Case block runs if the value in the switch statement parenthesis matches with the case value.
+// - The break statement is to terminate execution so the code execution does not go down after the condition is satisfied.
+// - The default block runs if all the cases don't satisfy the condition.
+// Example: Tell if its a working day or weekend
+let day = "Monday";
+switch (day) {
+  case "Monday":
+  case "Tuesday":
+  case "Wednesday":
+  case "Thursday":
+  case "Friday":
+    console.log("It is a working day!");
+    break;
+
+  case "Sunday":
+  case "Saturday":
+    console.log("Enjoy your weekend!");
+    break;
+
+  default:
+    console.log("Invalid input");
+    break;
+}
+
+// TERNARY OPERATOR ======================================================================
+// They are used to write small conditional statements
+let drink;
+age >= 5 ? (drink = "coffee") : (drink = "Milk");
+console.log(drink); // coffee as age>5
+
+// LOGICAL AND, LOGICAL OR OPERATORS    ==================================================
+// - They are used when we need to check more than one conditions once at a time
+// - && all the conditions must be true, for it to be true
+// - || any one condition is true, then the result is true
+
+// Example for AND operator
+hasDl = true;
+if (age >= 18 && hasDl === true) {
+  console.log("can drive"); // can drive
+}
+
+// Example for OR operator
+hasDl = true;
+if (age >= 18 || hasDl === true) {
+  console.log("can drive"); // can drive
+}
+
