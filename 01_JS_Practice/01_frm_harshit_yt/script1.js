@@ -1,4 +1,5 @@
 // JS PRACTICE FROM HARSHIT VASHISTH YT CHANNEL
+"useStrict";
 
 /**
  * HISTORY OF JS
@@ -284,3 +285,83 @@ if (age >= 18 || hasDl === true) {
   console.log("can drive"); // can drive
 }
 
+// WHILE LOOP ============================================================================
+// Example : Print 1-10 numbers by using while loop
+let i = 1;
+while (i <= 10) {
+  console.log(i);
+  i++;
+}
+// will print numbers from 1-10
+console.log(i); // 11 [the value of the i will now be incremented because of i++]
+
+// Example : Print the sum of 1st n natural nos using while loop
+let n = 0;
+let sum = 0;
+while (n <= 10) {
+  sum += n;
+  n++;
+}
+console.log(`The sum of 1st n natural numbers : ${sum}`); // 55 is correct
+
+// FOR LOOP ==============================================================================
+// Ex: Sum of 1st 10 natural numbers
+sum = 0;
+for (let i = 0; i <= 10; i++) {
+  sum += i;
+}
+console.log("The sum of 1st 10 Natural numbers:" + sum); // 55 is correct
+// Note: we can declare the i outside also like this:
+/* let i=0;
+   for(;i<=10;i++){
+   }
+*/
+
+// BREAK  ================================================================================
+for (let i = 0; i <= 10; i++) {
+  if (i === 4) {
+    break;
+  }
+  console.log(i);
+}
+console.log("hi");
+// when i=4, the iteration will stop
+// It is used to terminate the loop completely
+
+// CONTINUE ==============================================================================
+for (let i = 0; i <= 10; i++) {
+  if (i === 4) {
+    continue;
+  }
+  console.log(i);
+}
+console.log("hi");
+// The continue keyword is used to end the current iteration in a for loop (or a while loop), and continues to the next iteration.
+
+// DO WHILE LOOP  ========================================================================
+i = 10;
+do {
+  console.log(i);
+  i++;
+} while (i <= 9);
+// Difference b/t while and do-while loop
+// - do-while loop executes atleast once, before checking the condition
+// - while loop checks cond and then executes
+
+// ARRAYS ================================================================================
+// Arrays are ordered collection of items and are reference data types
+// We can store any data type in a Array
+// Create an Array
+let fruits = ["Apple", "Mango"];
+console.log(fruits); // ['Apple', 'Mango']
+console.log(fruits[0]); // Apple
+
+// Arrays are muttable
+fruits[0] = "Bannana";
+console.log(fruits); // ['Bannana', 'Mango']
+
+// Note: The reference type are objects in JS
+console.log(typeof fruits); //object
+
+// Then how do we know that the given obj is an Array?
+console.log(Array.isArray(fruits)); // true
