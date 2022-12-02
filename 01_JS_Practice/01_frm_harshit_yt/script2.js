@@ -218,7 +218,7 @@ const obj2 = {
 };
 console.log(obj2); // {objkey1: 'myvalue1', objkey2: 'myvalue2'}
 
-// SPREAD OPERATOR IN ARRAYS AND OBJECTS
+// SPREAD OPERATOR IN ARRAYS AND OBJECTS    ==============================================
 // Spread op in arrays
 const array1 = [1, 2, 3, 4, 5];
 const array2 = [6, 7, 8, 9];
