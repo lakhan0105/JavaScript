@@ -138,7 +138,7 @@ const [myvar1, myvar2, myvar3, ...myvarArray] = newArray6;
 console.log(myvar1, myvar2, myvar3); // value1 value2 undefined
 console.log(myvarArray); // [1, 2, 3]
 
-// OBJECTS IN JS
+// OBJECTS IN JS    ======================================================================
 // -  The single most important reason to care about objects is their capacity to improve your code's representation of the data and processes you're implementing
 // - arrays are good but, not suffecient for real world data
 // - Objects store key value pairs and they don't have index
@@ -249,3 +249,50 @@ const newObj = {
 console.log(newObj); // {key1: 'valueUnique', key2: 'value2', key3: 'value3', key4: 'value4'}
 // Note: we cannot have same keys in an object
 // - if there are same keys in a object, it will take the value of the key which comes in the end
+
+// OBJECTS DESTRUCTURING    ==============================================================
+const band = {
+  bandName: "coldplay",
+  famousSong: "Paradise",
+  year: 2012,
+};
+
+// Now, create variables and assign the values of the obj to it
+// let bandName = band.bandName;
+// let famousSong = band.famousSong;
+// console.log(bandName, famousSong); // coldplay Paradise
+
+// Another way [destructuring]
+let { bandName, famousSong } = band;
+console.log(bandName, famousSong); // coldplay Paradise
+
+// Change the variable name
+let { bandName: var5, famousSong: var6, ...restprop } = band;
+console.log(var5, var6, restprop); // coldplay Paradise {year: 2012}
+
+// OBJECTS INSIDE ARRAYS    ==============================================================
+// - They are very useful in real world applications
+const users = [
+  { user_id: 1, userName: "lakhan", gender: "male" },
+  { user_id: 2, userName: "sarvan", gender: "male" },
+  { user_id: 3, userName: "dinesh", gender: "male" },
+];
+console.log(users); // [{…}, {…}, {…}]
+
+for (let user of users) {
+  console.log(user);
+}
+// output
+// {user_id: 1, userName: 'lakhan', gender: 'male'}
+// {user_id: 2, userName: 'sarvan', gender: 'male'}
+// {user_id: 3, userName: 'dinesh', gender: 'male'}
+
+// nested destructuring ==================================================================
+const [user1, user2] = users;
+console.log(user1, user2);
+// {user_id: 1, userName: 'lakhan', gender: 'male'}
+// {user_id: 2, userName: 'sarvan', gender: 'male'}
+
+// Let's say u want only the userName of 1st obj and gender from 2nd
+const [{ userName }, { gender: userGender }] = users;
+console.log(userName, userGender); // lakhan male
