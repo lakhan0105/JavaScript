@@ -126,3 +126,96 @@ function profile() {
 //   var firstName2 = "lakhan";
 // }
 // console.log(firstName2); // lakhan
+
+// DEFAULT PARAMETERS ====================================================================
+// Default function parameters allow named parameters to be initialized with default values if no value or undefined is passed.
+
+function myFunc(a, b) {
+  return a + b;
+}
+console.log(myFunc(1)); // NaN
+
+// we dont want it to print NaN when we miss any argument
+
+// Old way
+// function myFunc(a, b) {
+//   if (b === undefined) {
+//     b = 0;
+//   }
+//   return a + b;
+// }
+// console.log(myFunc(1)); // 1
+
+// New way
+// function myFunc(a, b = 0) {
+//   return a + b;
+// }
+// console.log(myFunc(1)); // 1
+
+// REST PARAMETERS
+// The rest parameter syntax allows a function to accept an indefinite number of arguments as an array, providing a way to represent variadic functions in JavaScript.
+function myFun2(a, b, ...c) {
+  console.log(`a is ${a}`);
+  console.log(`b is ${b}`);
+  console.log(`c is ${c}`);
+}
+myFun2(1, 2, 3, 4, 5, 6); // a is 1, b is 2, c is 3,4,5,6
+
+// Create a func which adds all the args
+// Note: ...a => will turn the args into array
+function addAll(...a) {
+  let sum = 0;
+  for (let i = 0; i < a.length; i++) {
+    sum += a[i];
+  }
+  console.log(sum);
+}
+addAll(1, 2); // 3
+
+// PARAM DESTRUCTURING  ==================================================================
+// - mostly used with objects and in react
+const person3 = {
+  firstName: "Lakhan",
+  age: 21,
+};
+
+// function myFun3(obj) {
+//   console.log(obj.firstName);
+//   console.log(obj.age);
+// }
+// myFun3(person3); // Lakhan // 21
+
+// we can do this by obj destructuring also
+// Thid is called param destructuring
+function myFun3({ firstName, age }) {
+  console.log(firstName);
+  console.log(age);
+}
+myFun3(person3); // Lakhan // 21
+
+// CALLBACK FUNCTIONS
+function myFun4() {
+  console.log("inside myfunc 4");
+}
+
+function myFun5(callback) {
+  callback();
+  console.log("inside 5 after calling myFun4");
+}
+
+myFun5(myFun4);
+// output
+// inside myfunc 4
+// inside 5 after calling myFun4
+
+// FUNCTION RETURNING FUNCTION  ==========================================================
+function myFun6() {
+  function helloFunc() {
+    console.log("hello world!");
+  }
+  return helloFunc; // no need of ()
+}
+
+let ans = myFun6();
+// console.log(ans); // prints the whole function on the screen
+ans(); // hello world!
