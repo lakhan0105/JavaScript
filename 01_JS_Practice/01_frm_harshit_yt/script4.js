@@ -29,4 +29,3 @@ function square(number) {
 }
 const squareNumber = numbers2.map(square);
 console.log(squareNumber); // [9, 16, 36, 1, 64]
-

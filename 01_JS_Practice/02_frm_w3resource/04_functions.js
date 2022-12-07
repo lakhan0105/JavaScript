@@ -52,16 +52,77 @@ console.log(upperCase("lakhan kumar is a good boy")); // Lakhan Kumar Is A Good 
 // Write a JavaScript function that accepts a string as a parameter and find the longest word within the string
 function longStr(anyString) {
   let strLength = [];
-  let largest = 0;
-
+  let largest = "";
   splitStr = anyString.split(" ");
   for (let i = 0; i < splitStr.length; i++) {
-    strLength.push(splitStr[i].length);
-    if (strLength[i] > largest) {
-      largest = strLength[i];
+    if (splitStr[i].length > largest.length) {
+      largest = splitStr[i];
     }
   }
-  console.log(largest);
+  console.log(`${largest} is the longest word in the string`);
+}
+longStr("Sarvan Singh is a gooooood boy"); // good
+
+// Write a JavaScript function that accepts a string as a parameter and counts the number of vowels within the string.
+function hasVowels(anyString) {
+  let vowels = ["a", "e", "i", "o", "u"];
+  let stringVowels = [];
+  let vowelsCount = 0;
+  for (let i = 0; i < anyString.length; i++) {
+    for (let j = 0; j < vowels.length; j++) {
+      if (anyString[i] === vowels[j]) {
+        stringVowels.push(vowels[j]);
+        vowelsCount++;
+      }
+    }
+  }
+  console.log(`Vowels in the given string are: ${stringVowels}`);
+  console.log(
+    `There are ${vowelsCount} vowels in the given string [Repetition is also counted]`
+  );
+}
+hasVowels("lakhsneeu");
+
+// Write a JavaScript function that accepts a number as a parameter and check the number is prime or not.
+function isPrime(num) {
+  let count = 0;
+  for (let i = 1; i <= num; i++) {
+    if (num % i === 0) {
+      count++;
+    }
+  }
+  if (count === 2) {
+    console.log("The number is prime ");
+  } else {
+    console.log("not a prime no");
+  }
+}
+isPrime(68);
+
+// Write a JavaScript function which accepts an argument and returns the type
+function type(arg) {
+  return typeof arg;
+}
+console.log(type("lakhan")); // string
+
+// Write a JavaScript function which returns the n rows by n columns identity matrix.
+// STILL LEARNING
+
+// Write a JavaScript function which will take an array of numbers stored and find the second lowest and second greatest numbers, respectively
+function secLowHigh(arr) {
+  let largest = arr[0];
+  let smallest = arr[0];
+
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] > largest) {
+      largest = arr[i];
+    }
+    if (arr[i] < smallest) {
+      smallest = arr[i];
+    }
+  }
+  console.log(`largest : ${largest}`);
+  console.log(`smallest : ${smallest}`);
 }
 
-longStr("Sarvan Singh is a gooooood boy"); // 8
+secLowHigh([4, 2, 8, 6, 5]);
