@@ -112,17 +112,48 @@ console.log(type("lakhan")); // string
 function secLowHigh(arr) {
   let largest = arr[0];
   let smallest = arr[0];
+  let secondL = arr[0];
+  let secondS = arr[0];
 
   for (let i = 0; i < arr.length; i++) {
     if (arr[i] > largest) {
+      secondL = largest;
       largest = arr[i];
     }
+    if (arr[i] < largest && secondL < arr[i]) {
+      secondL = arr[i];
+    }
+
     if (arr[i] < smallest) {
+      secondS = smallest;
       smallest = arr[i];
     }
+    if (arr[i] > smallest && secondS > arr[i]) {
+      secondS = arr[i];
+    }
   }
-  console.log(`largest : ${largest}`);
-  console.log(`smallest : ${smallest}`);
+  console.log(`largest : ${largest}`); // 8
+  console.log(`secondL : ${secondL}`); // 6
+  console.log(`smallest : ${smallest}`); // 2
+  console.log(`secondS : ${secondS}`); //3
 }
+secLowHigh([4, 2, 8, 6, 5, 3]);
 
-secLowHigh([4, 2, 8, 6, 5]);
+/*  Write a JavaScript function which says whether a number is perfect. Go to the editor
+According to Wikipedia : In number theory, a perfect number is a positive integer that is equal to the sum of its proper positive divisors, that is, the sum of its positive divisors excluding the number itself (also known as its aliquot sum). Equivalently, a perfect number is a number that is half the sum of all of its positive divisors (including itself).
+Example : The first perfect number is 6, because 1, 2, and 3 are its proper positive divisors, and 1 + 2 + 3 = 6. Equivalently, the number 6 is equal to half the sum of all its positive divisors: ( 1 + 2 + 3 + 6 ) / 2 = 6. The next perfect number is 28 = 1 + 2 + 4 + 7 + 14. This is followed by the perfect numbers 496 and 8128.
+*/
+
+// Write a JavaScript function to compute the factors of a positive integer.
+function factors(anyInt) {
+  let factorsArr = [];
+  for (let i = 1; i <= anyInt; i++) {
+    if (anyInt % i === 0) {
+      factorsArr.push(i);
+    }
+  }
+  console.log(factorsArr); //! do not change line else ERROR
+}
+factors(15); // [1,3,5,15]
+
+// Write a JavaScript function to convert an amount to coins.
