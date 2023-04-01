@@ -1,6 +1,6 @@
 // SECTION 4
 
-// 56. STRING PROPERTIES AND METHODS
+// 56. STRING PROPERTIES AND METHODS -----------------------------------------------------
 // How can we acces those methods ?
 // - wrapper string object allows us to acces these methods
 
@@ -96,7 +96,6 @@ console.log(splicedFriends); // ['new item in the beginning', 'prakash', 'dinesh
 console.log(friends); // ['new friend']
 
 // 60. EXERCISE - Full Name --------------------------------------------------------------
-
 // Arrays and for loops
 const names = ["anna", "susy", "bob"];
 const lastNames = "shakeandbake";
@@ -158,7 +157,7 @@ console.log(arr1, arr2); //  ['item1', 'item2']  ['item1', 'item2']
 arr2.push("newItem");
 console.log(arr1, arr2); //  ['item1', 'item2', 'newItem'] (3) ['item1', 'item2', 'newItem']
 
-// 63. Null and undefined
+// 63. Null and undefined ---------------------------------------------------------------
 // both represents 'no value'
 // undefined - 'js cannot find the value'
 // null - developer sets the value
@@ -169,15 +168,135 @@ console.log(20 + undefined); // 20+undefined => NaN
 // Falsy => '', "", 0, -0, NaN, flase, undefined, null
 // Truthy => everything except falsy values
 
+// Example 1
 if ("sometext") {
   console.log("truthy"); // true cuz 'sometext'-true
 } else {
   console.log("flasy");
 }
 
-// Another example
+// Example 2
 if ("") {
   console.log("truthy");
 } else {
   console.log("flasy"); // false cuz ''- false
 }
+
+// 65. TERNARY OPERATOR ------------------------------------------------------------------
+// unary operator - typeof
+// binary operattor - assignment
+// ternary operator - has three operands
+// condition ? (runs if true) : (runs if false)
+
+let drink;
+age = 21;
+age > 18 ? (drink = "beer") : (drink = "milk");
+console.log("You drink " + drink);
+
+// 66. GLOBAL SCOPE (some doubts) ------------------------------------------------------
+// - any var outside the code block is said to be in global scope
+// - can be accessedfrom anywhere
+// - disadvantage: name collisions, modify by mistake
+
+// 67. Local Scope (doubts) -------------------------------------------------------------
+// Local scope can be accessed only inside the code block
+
+// 69. Callback functions, Higher order functions, Functions as first class objects/citizens
+// - Functions are first class objects - stored in a variable (expression)
+// - Passed as an arguement to another function
+// - Return from another function (closure)
+
+// Higer order function - accepts another function as an arguement or returns another function as a result (It basically accepts callback function)
+
+// Callback function - passed to another function as an arguement and executed inside that function (its that func that we are passing in higher order function)
+
+// callback function
+function morning(name) {
+  return `Good morning ${name}`;
+}
+
+// callback function
+function afternoon(name) {
+  return `Good afternoon ${name}`;
+}
+
+// Higher order function
+function greet(userName, cb) {
+  const myName = "dinesh";
+  console.log(`${cb(userName)}, my name is ${myName}`);
+}
+
+// Invoking the greet function with (userName,callbackfunction)
+// Note: we did not invoke the callback function
+greet("lakhan", morning);
+greet("sarvan", afternoon);
+
+// 70. Array Iterators
+// Powerful array methods
+// forEach, map, filter, find, reduce
+// Iterate over array and no for loop reequired
+// Accept CALLBACK fuc as an arg, calls Callback against each item of the array.
+// Reference Item in the callback parameter
+
+// 71. forEach
+// - It iterates over the array
+// - It does not return new array
+const people = [
+  { name: "raj", position: "developer", age: 21 },
+  { name: "prakash", position: "designer", age: 51 },
+  { name: "niranjan", position: "manager", age: 70 },
+];
+
+// setting up callback function
+function callPerson(person) {
+  console.log(person.position.toUpperCase());
+}
+
+// we can pass the callback function by using two ways in forEach
+// by passing the function nanme as an arg (set up func separately & passing the ref)
+people.forEach(callPerson);
+
+// by writing the function directly in the forEach arg (anonymous function)
+// Note: we are not invoking here
+people.forEach(function (item) {
+  console.log(item.position.toUpperCase());
+  // return item.position.toUpperCase(); // does not work
+});
+
+// 72. map
+// does return new array
+// does not change the size of the original array
+// uses values from original array when making new one
+// Note: if we do not return anything, result => [undefined, undefined, undefined]
+
+const personName = people.map(function (item2) {
+  // return as an array
+  // return item2.name;
+
+  // return as objects
+  return {
+    firstName: item2.name,
+  };
+});
+
+console.log(personName); // ['raj', 'prakash', 'niranjan']
+
+// 73. Filter method
+// - Filter also returns a new array
+// - We can manipulate the size of the array
+// - Because it returns based on conditions
+// - If 2 items match our condition, then only two items of the array will be returned
+// - If none of the conditions are matched, we get an empty array
+const youngPeople = people.filter(function (item3) {
+  return item3.age <= 40;
+});
+console.log(youngPeople); // { name: "raj", position: "developer", age: 21 }
+
+// 74. find method
+// It returns first single instance - (in this case object)
+// returns 1st match, if no match - undefined
+// great for getting unique values
+const findPeople = people.find(function (item4) {
+  return item4.age === 21;
+});
+console.log(findPeople); // {name: 'raj', position: 'developer', age: 21}
