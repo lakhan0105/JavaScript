@@ -242,9 +242,9 @@ greet("sarvan", afternoon);
 // - It iterates over the array
 // - It does not return new array
 const people = [
-  { name: "raj", position: "developer", age: 21 },
-  { name: "prakash", position: "designer", age: 51 },
-  { name: "niranjan", position: "manager", age: 70 },
+  { name: "raj", position: "developer", age: 21, salary: 5000 },
+  { name: "prakash", position: "designer", age: 51, salary: 5000 },
+  { name: "niranjan", position: "manager", age: 70, salary: 5000 },
 ];
 
 // setting up callback function
@@ -268,7 +268,6 @@ people.forEach(function (item) {
 // does not change the size of the original array
 // uses values from original array when making new one
 // Note: if we do not return anything, result => [undefined, undefined, undefined]
-
 const personName = people.map(function (item2) {
   // return as an array
   // return item2.name;
@@ -278,7 +277,6 @@ const personName = people.map(function (item2) {
     firstName: item2.name,
   };
 });
-
 console.log(personName); // ['raj', 'prakash', 'niranjan']
 
 // 73. Filter method
@@ -300,3 +298,21 @@ const findPeople = people.find(function (item4) {
   return item4.age === 21;
 });
 console.log(findPeople); // {name: 'raj', position: 'developer', age: 21}
+// Note: ERROR: when we try to finf the undefined property
+
+// reduce
+// iterates, callback functions
+// reduces to a single value -  number, array, object
+// 1. parameter ('acc') - total of all calculations
+// 2. parameter ('curr) - current iteration/value
+// Note: returning acc is mandatory (1st param from cb func)
+console.log("=======================");
+
+const reducePeople = people.reduce(function (acc, curr) {
+  console.log(`Total : ${acc}`);
+  console.log(`Current sal: ${curr.salary}`);
+  // add the total sal and store in acc var
+  acc += curr.salary;
+  return acc; // [mandatory]
+}, 0);
+console.log(reducePeople); // total: 15000
