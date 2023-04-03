@@ -316,3 +316,86 @@ const reducePeople = people.reduce(function (acc, curr) {
   return acc; // [mandatory]
 }, 0);
 console.log(reducePeople); // total: 15000
+
+// Using bracket notation -------------------------------------------------------------
+// - It helps us to add data dynamically
+// - add prop in total by using the variable value of 'sub' and set its val to 'some val'
+const sub = "arts";
+const total = {};
+
+total[sub] = "some val";
+console.log(total);
+
+// 86. Math Operation in JS -----------------------------------------------------------
+// Standard building objects - always available
+const number = 3.54584;
+
+// floor (rounds down)
+console.log(Math.floor(number)); // 3
+
+// ceil (rounds up)
+console.log(Math.ceil(number)); // 4
+
+// square root
+console.log(Math.sqrt(4)); // 2
+
+// PI
+console.log(Math.PI); // 3.14
+
+// min and max
+console.log(Math.min(1, 2, 3, 4, 5)); // 1
+console.log(Math.max(1, 2, 3, 4, 5)); // 5
+
+// random
+console.log(Math.random()); // 0- 0.99999
+console.log(Math.random() * 10); // 0- 9.99999
+
+// flooring the random number
+console.log(Math.floor(Math.random() * 10)); // 0- 9
+
+// Problem : we do not get from 1, but from 0
+// to fix that add 1
+console.log(Math.floor(Math.random() * 10) + 1); // 0- 9
+
+// 87. Date Object -----------------------------------------------------------------------
+const date = new Date();
+console.log(date); // Mon Apr 03 2023 12:22:51 GMT+0530 (India Standard Time)
+
+console.log(date.getDate()); // 3 (cuz its 3rd april today)
+console.log(date.getMonth()); // 3 (april is 3 cuz month index starts with 0)
+console.log(date.getFullYear()); // 2023
+
+// How to get the day of the week?
+console.log(date.getDay()); // 1 (cuz sunday=0, monday=1, tue=2......)
+
+const days = [
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+];
+
+const months = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
+
+// Print today's date by refernecing the days and months array above
+console.log(
+  `Today's Date: ${days[date.getDay()]}, ${date.getDate()} ${
+    months[date.getMonth()]
+  } ${date.getFullYear()}`
+);
