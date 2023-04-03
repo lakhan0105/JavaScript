@@ -86,7 +86,7 @@ const listItem = document.getElementsByClassName("special");
 console.log(listItem); // HTMLCollection(2) [li.special, li.special]
 listItem[0].style.color = "blue"; // item1 turns blue
 
-// 94. QuerySel and QuerySelAll
+// 94. QuerySel and QuerySelAll ---------------------------------------------------------
 // - querySelector('any css') - selects single
 // - querySelectorAll ('any css') - selects all
 // - we can use forEach()
@@ -106,10 +106,76 @@ list.forEach(function (item) {
   item.style.color = "green"; // item1 and 2 with 'special' class turns green
 });
 
-// 95. nav/traverse the dom [DOUBT]
+// 95. nav/traverse the dom [DOUBT] -----------------------------------------------------
 console.log(resultEl.childNodes); // gives all the child nodes => text,li,text,li....
 // NodeList(7) [text, li.special, text, li, text, li.special.last, text]
 console.log(resultEl.children); // gives only children => li,li....
 // HTMLCollection(3) [li.special, li, li.special.last]
 console.log(resultEl.firstChild); // text
 console.log(resultEl.lastChild); // text (whitespace)
+
+// 96. parent element --------------------------------------------------------------------
+const paraInfoEl = document.querySelector(".para-info");
+console.log(paraInfoEl);
+console.log(paraInfoEl.parentElement); // para-container
+console.log(paraInfoEl.parentElement.parentElement); // main-container
+console.log(paraInfoEl.parentElement.parentElement.parentElement); // body
+console.log(paraInfoEl.parentElement.parentElement.parentElement.parentElement); // html
+console.log(
+  paraInfoEl.parentElement.parentElement.parentElement.parentElement
+    .parentElement
+); // null
+// Note: when we run out of parent els, we get null
+
+// 97. nextSibling, previousSibling ------------------------------------------------------
+// select and print 1st item
+const first = document.querySelector(".first");
+console.log(first); // gives item1 el
+
+// select and print last item
+const last = document.querySelector(".last");
+console.log(last); // gives last item
+
+// next sibling
+console.log(first.nextSibling); // text (1st time it will return text)
+console.log(first.nextSibling.nextSibling); // gives item2
+
+// previous sibling
+console.log(last.previousSibling); // text
+console.log(last.previousSibling.previousSibling); // item 2
+
+// Note:
+// - First time it will return text(whitespace)
+// - if ur selecting last and looking for next sibling => null
+
+// nextElSibling and previousElsibling --------------------------------------------------
+// - does not return white space(text)
+console.log(first.nextElementSibling); // li el (item2)
+console.log(last.previousElementSibling); // li el (item2)
+
+// Get the text from the element --------------------------------------------------------
+// nodeValue property
+console.log(h1El.nodeValue); // null
+console.log(h1El.childNodes[0].nodeValue); // Hello // or
+console.log(h1El.firstChild.nodeValue); // Hello
+
+// textContent property
+console.log(h1El.textContent); // Hello
+
+// get and set attributes methods --------------------------------------------------------
+// Note: do not forget to put ''
+// get attribute of h1el
+console.log(h1El.getAttribute("id")); // title
+
+// set attribute of a tag
+// select the links container
+const linksContEl = document.querySelector(".links-container");
+linksContEl.childNodes[1].setAttribute("href", "https://www.google.com/");
+
+// classList and className
+// - The classList property returns the CSS classnames of an element.
+// - The classList property returns a DOMTokenList.
+// - The className property returns the name of the classes in the form of a string
+
+console.log(linksContEl.classList); // ['links-container', value: 'links-container']
+console.log(linksContEl.className); // links-container
