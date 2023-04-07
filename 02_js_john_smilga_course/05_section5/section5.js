@@ -38,7 +38,7 @@ console.log(css);
 
 // 91. getElementById -------------------------------------------------------------------
 // - Allows us to select the methods by their id
-// - chenge the color of the h1 el by using getElbyId
+// - change the color of the h1 el by using getElbyId
 const h1El = document.getElementById("title");
 h1El.style.color = "red";
 
@@ -172,10 +172,48 @@ console.log(h1El.getAttribute("id")); // title
 const linksContEl = document.querySelector(".links-container");
 linksContEl.childNodes[1].setAttribute("href", "https://www.google.com/");
 
-// classList and className
+// classList and className properties
 // - The classList property returns the CSS classnames of an element.
 // - The classList property returns a DOMTokenList.
 // - The className property returns the name of the classes in the form of a string
 
 console.log(linksContEl.classList); // ['links-container', value: 'links-container']
 console.log(linksContEl.className); // links-container
+
+// Note:
+// - classname allows us to add only one class, if u reassgn/overwrite - not work
+// - but we can include multiple class names at once
+// - ex: links.className = "class1 class2 class3" (but cannot reassign)
+// - classList ex
+// third.classList.add('class1');
+// third.classList.add('class2');
+
+// 102
+// createElement('element') -------------------------------------------------------------
+// createTextNode('text content')
+// element.appendChild(childElement)
+
+// add new element and content dynamically
+// select the parent element
+const container2El = document.querySelector(".container-2");
+// create an empty element
+const bodyPara = document.createElement("p");
+// create text node
+const text = document.createTextNode("hello world from para");
+// append
+bodyPara.appendChild(text);
+// append to parent
+container2El.appendChild(bodyPara); // p content will be placed on the web page
+
+// 103 [DOUBT]
+// insertBefore(element, location)
+
+// 104
+// replaceChild(new, old)
+const smallHeading = document.createElement("h6");
+const smallText = document.createTextNode("this is a small heading ");
+smallHeading.appendChild(smallText);
+// replce the h1 element
+document.body.replaceChild(smallHeading, title);
+// replece the bodyPara in the container2El with smallHeading
+container2El.replaceChild(smallHeading, bodyPara);
