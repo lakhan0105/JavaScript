@@ -66,20 +66,27 @@ const changeReview = function (index) {
   reviewEl.textContent = reviewsArray[index].review;
 };
 
+// Event Listener for DOMContentLoaded
+window.addEventListener("DOMContentLoaded", function () {
+  changeReview(0);
+});
+
 // Event Listener for next btn
 nextBtnEl.addEventListener("click", function () {
-  if (currentReview < reviewsArray.length - 1) {
-    currentReview++;
-    changeReview(currentReview);
+  if (currentReview === reviewsArray.length - 1) {
+    currentReview = 0; // change cr to 0 (low index) when reached last item of arr
   }
+  currentReview++;
+  changeReview(currentReview);
 });
 
 // Event Listener for prev btn
 prevBtnEl.addEventListener("click", function () {
-  if (currentReview > 0) {
-    currentReview--;
-    changeReview(currentReview);
+  if (currentReview <= 0) {
+    currentReview = reviewsArray.length; // change cr to highest index (last item of ary)
   }
+  currentReview--;
+  changeReview(currentReview);
 });
 
 // Event Listener for random btn
@@ -90,3 +97,4 @@ randBtnEl.addEventListener("click", function () {
 
 // DOUBTS
 // -we can also build this without passing an arg in changereview(), cuz reviewNumber is a global variable
+//- problem: the size of the container keeps changing when i press next/any btn
