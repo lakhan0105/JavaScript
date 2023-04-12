@@ -91,3 +91,19 @@ header::after {
   z-index: 2;
 }
 
+/* PRELOADER styling */
+.preloader {
+  display: grid;
+  place-items: center;
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 100%;
+  top: 0;
+  background-color: #fff;
+  z-index: 99;
+}
+
+.hide-preloader {
+  display: none;
+}
