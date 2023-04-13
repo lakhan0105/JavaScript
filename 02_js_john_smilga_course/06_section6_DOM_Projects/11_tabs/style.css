@@ -1,0 +1,102 @@
+/* fonts import */
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap");
+
+/* CSS Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+  background: #f1f5f8;
+}
+
+/* header section styling */
+.header-section {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 5.5em 1em;
+}
+
+.title {
+  margin-bottom: 4em;
+}
+
+.title h2 {
+  font-size: 2.3rem;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.2em;
+}
+
+/* cards container  */
+.cards-row {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+}
+
+/* card styling */
+.card {
+  width: 47%;
+  min-height: 20em;
+  border-radius: 0.5em;
+  overflow: hidden;
+  background-color: #fff;
+}
+
+.image-card {
+  height: 20em;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* tabs card styling */
+.tabs-header {
+  width: 100%;
+  background: red;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.btn {
+  font-size: 1rem;
+  width: 100%;
+  background-color: #c2c2c2;
+  border: none;
+  padding: 1em;
+  letter-spacing: 0.1em;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.btn:hover {
+  cursor: pointer;
+  background-color: #fff;
+}
+
+.btn:focus {
+  background-color: #fff;
+}
+
+/* tab content */
+.tab-content {
+  padding: 1em;
+  text-align: left;
+  text-transform: capitalize;
+}
+
+.tab-content h2 {
+  margin-bottom: 0.5em;
+}
