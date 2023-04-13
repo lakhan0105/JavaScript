@@ -1,0 +1,150 @@
+/* Import fonts */
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap");
+
+/* CSS Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+  position: relative;
+}
+
+/* header element styling */
+header {
+  background-color: red;
+  min-height: 100vh;
+}
+
+/* nav-center styling */
+.nav-center {
+  background: #fff;
+}
+
+/* nav-header styling */
+.nav-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5em 1em;
+}
+
+/* nav-toggle button */
+.nav-toggle {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  margin-right: 0.5em;
+  cursor: pointer;
+}
+
+/* nav-list-container styling */
+.nav-list-container {
+  height: 0em;
+  overflow: hidden;
+}
+
+.list {
+  list-style-type: none;
+  padding: 0.2em 1em;
+}
+
+.list li {
+  list-style-type: none;
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: capitalize;
+  padding: 0.7em 0em;
+}
+
+a {
+  text-decoration: none;
+  color: #617d98;
+}
+
+/* HERO SECTION STYLING ------------------------- */
+.section {
+  min-height: 100vh;
+}
+
+.banner {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.banner-text {
+  padding: 1em 3em;
+}
+
+#about {
+  background-color: green;
+}
+
+/* HERO SECTION ENDS ----------------------------- */
+/* CLASSES STARTS --------------------------------*/
+.position-fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.hide {
+  display: none;
+}
+/* CLASSES ENDS ---------------------------------- */
+
+/* footer section */
+.footer-section {
+  background: #102a42;
+  color: white;
+  padding: 3.5em;
+  text-align: center;
+  letter-spacing: 0.1em;
+}
+
+.top-btn {
+  height: 2em;
+  border: 1px solid;
+  position: fixed;
+  bottom: 1em;
+  right: 1em;
+  z-index: 10;
+  cursor: pointer;
+  padding: 0.1em 0.2em;
+  text-transform: uppercase;
+}
+
+/* media queries -----------------------------------------------------------------------*/
+@media (min-width: 700px) {
+  .nav-center {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* height: auto; */
+  }
+  .nav-list-container {
+    height: auto !important;
+  }
+  .nav-toggle {
+    display: none;
+  }
+  .list {
+    display: flex;
+  }
+  li {
+    margin-right: 1.5rem;
+  }
+}
