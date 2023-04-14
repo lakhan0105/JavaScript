@@ -1,0 +1,85 @@
+/* import font */
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap");
+
+/* CSS Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+}
+
+/* section container styling */
+.section-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #f1f5f8;
+}
+
+.section-header {
+  margin-bottom: 2em;
+}
+
+.title {
+  font-size: 2rem;
+  margin-bottom: 1em;
+}
+
+/* input container  */
+.input-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2.5em;
+}
+
+.input-container p {
+  font-size: 1.3rem;
+  letter-spacing: 0.1em;
+}
+
+.input-container .input {
+  font-size: 1.2rem;
+  width: 3em;
+  padding: 0.24em 0.25em;
+  border-radius: 0.35em;
+  border: none;
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+}
+
+.generate-btn {
+  font-family: "Open Sans", sans-serif;
+  text-transform: uppercase;
+  padding: 0.5em 0.7em;
+  border-radius: 0.5em;
+  border: none;
+  background-color: #49a6e9;
+  letter-spacing: 0.1em;
+  box-shadow: 1px 1px 2px #49a6e9;
+}
+
+.generate-btn:hover {
+  cursor: pointer;
+  background-color: #8fc2e7bb;
+  color: rgb(71, 70, 70);
+  transition: 0.2s;
+}
+
+/* text container  */
+.text-container {
+  width: 53%;
+  text-align: center;
+  color: #68859f;
+  line-height: 1.4em;
+}
