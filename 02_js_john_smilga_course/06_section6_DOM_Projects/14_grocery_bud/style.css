@@ -66,7 +66,7 @@ body {
 }
 
 /* input container */
-.input-container {
+.form {
   width: 100%;
   display: flex;
   border-radius: 0.5em;
@@ -105,6 +105,7 @@ body {
 /* items container styling ----------------------------------------------- */
 .items-container {
   width: 100%;
+  visibility: hidden;
 }
 
 .item {
@@ -153,6 +154,7 @@ li {
   border: none;
   background-color: #fff;
   /* display: none; */
+  visibility: hidden;
 }
 
 .clear-items:hover {
@@ -166,7 +168,7 @@ li {
   background-color: #e64c4c;
 }
 
-.show-added {
+.show-success {
   background-color: #46f146;
 }
 
