@@ -1,4 +1,4 @@
-// Selecting the elements
+// Selecting the elements ***************************************************************
 const messageEl = document.querySelector(".message");
 const form = document.querySelector(".form");
 const userInput = document.querySelector(".user-input");
@@ -7,55 +7,32 @@ const itemsContainer = document.querySelector(".items-container");
 const itemslist = document.querySelector(".items-list");
 const clearBtn = document.querySelector(".clear-items");
 
-// Initialising the values
+// Initialising the values ************************************************************
 let editElement;
 let editFlag = false;
 let editID = "";
+let value;
 
 // EVENT LISTENERS ********************************************************************
 // Event listener for form
 form.addEventListener("submit", addItem);
 
-// clear button event listener
+// Event Listener for clear items button
 clearBtn.addEventListener("click", clearItems);
+
+// Event Listener for DOMContentLoaded
+document.addEventListener("DOMContentLoaded", loadItems);
 
 // FUNCTIONS **************************************************************************
 // addItem function -----------------------------------------------------------------
 function addItem(e) {
   e.preventDefault(); // prevents the default behaviour when event occurs
 
-  const value = userInput.value; // grab the input value
+  value = userInput.value; // grab the input value
   const id = new Date().getTime().toString(); // generate id
 
   if (value !== "" && editFlag === false) {
-    // Create the item element to be added dynamically
-    const element = document.createElement("li"); // create li el
-    element.classList.add("item"); // add class to li el
-
-    // create attribute for the element (data-id=id)
-    const attr = document.createAttribute("data-id");
-    attr.value = id;
-    element.setAttributeNode(attr);
-
-    itemslist.appendChild(element); // append with list-itmes (ul)
-    element.innerHTML = `<p class="item-text">${value}</p>
-                        <div class="btns-container">
-                            <button class="btn edit-btn">
-                                <i class="fa-solid fa-pen-to-square"></i>
-                            </button>
-                            <button class="btn delete-btn">
-                                <i class="fa-solid fa-trash"></i>
-                            </button>
-                        </div>`;
-
-    const editBtn = element.querySelector(".edit-btn");
-    let deleteBtn = element.querySelector(".delete-btn");
-
-    // delete btn event listener
-    deleteBtn.addEventListener("click", deleteItem);
-    // edit item event listener
-    editBtn.addEventListener("click", editItem);
-
+    createItem(id, value);
     message("Item added successfully!", "success"); // message
     clearBtn.classList.add("show"); // show the clear btn
     itemsContainer.classList.add("show"); // unhide the items-container
@@ -65,14 +42,14 @@ function addItem(e) {
   } else if (value !== "" && editFlag === true) {
     editElement.innerHTML = value;
     message("Edited the item", "success");
-    // editFromLocalStorage(editElement.textContent);
+    editFromLocalStorage(editID);
     setToDefault();
   } else {
     message("please enter something", "danger");
   }
 }
 
-// message function --------------------------------------------------------------------
+// Message function --------------------------------------------------------------------
 const message = function (message, action) {
   messageEl.textContent = message;
   messageEl.classList.add(`show-${action}`);
@@ -103,6 +80,8 @@ function clearItems() {
       itemslist.removeChild(item); // grab the parent of item and remove the item
     });
   }
+
+  localStorage.removeItem("list"); // clear items from local storage
 
   message("cleared the list", "danger");
   clearBtn.classList.remove("show");
@@ -140,19 +119,96 @@ function editItem(e) {
   editID = element.dataset.id;
 }
 
-// LOCAL STORGAE ************************************************************************
+// createItem function -----------------------------------------------------------------
+function createItem(id, value) {
+  // Create the item element to be added dynamically
+  const element = document.createElement("li"); // create li el
+  element.classList.add("item"); // add class to li el
+
+  // create attribute for the element (data-id=id)
+  const attr = document.createAttribute("data-id");
+  attr.value = id;
+  element.setAttributeNode(attr);
+
+  itemslist.appendChild(element); // append with list-itmes (ul)
+  element.innerHTML = `<p class="item-text">${value}</p>
+                        <div class="btns-container">
+                            <button class="btn edit-btn">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </button>
+                            <button class="btn delete-btn">
+                                <i class="fa-solid fa-trash"></i>
+                            </button>
+                        </div>`;
+
+  const editBtn = element.querySelector(".edit-btn");
+  let deleteBtn = element.querySelector(".delete-btn");
+
+  // delete btn event listener
+  deleteBtn.addEventListener("click", deleteItem);
+  // edit item event listener
+  editBtn.addEventListener("click", editItem);
+}
+
+// LOCAL STORAGE ************************************************************************
+// set to local storage function ---------------------------------------------
 const setToLocalStorage = function (id, value) {
-  localStorage.setItem(id, JSON.stringify(value));
+  const iteminfo = { id: id, value: value }; // create an object
+
+  // used conditional statement to not to ovverride the local storage value
+  let items = localStorage.getItem("list")
+    ? JSON.parse(localStorage.getItem("list"))
+    : []; // create an array and push the obj values inside it
+
+  items.push(iteminfo);
+  localStorage.setItem("list", JSON.stringify(items));
 };
 
+// remove from local storage function ---------------------------------------------------
 const removeFromLocalStorage = function (id) {
-  console.log(id);
-  localStorage.removeItem(id);
+  let items = localStorage.getItem("list")
+    ? JSON.parse(localStorage.getItem("list"))
+    : [];
+
+  items = items.filter(function (item) {
+    if (item.id !== id) {
+      return item;
+    }
+  });
+
+  // override the local storage
+  localStorage.setItem("list", JSON.stringify(items));
 };
 
-// const editFromLocalStorage = function (txt) {
-//   // console.log("edit frm local storage");
-//   const value = JSON.parse(localStorage.getItem(txt));
+// Edit from local storage function -----------------------------------------------------
+const editFromLocalStorage = function (id) {
+  let items = localStorage.getItem("list")
+    ? JSON.parse(localStorage.getItem("list"))
+    : [];
 
-//   console.log(value);
-// };
+  items = items.map(function (item) {
+    if (item.id === id) {
+      item.value = value; // set the value of item to value of usr input
+    }
+    return item;
+  });
+
+  // override the local storage
+  localStorage.setItem("list", JSON.stringify(items));
+};
+
+// Load stored Items when page is loaded ------------------------------------------------
+function loadItems() {
+  let items = localStorage.getItem("list")
+    ? JSON.parse(localStorage.getItem("list"))
+    : [];
+
+  if (items.length > 0) {
+    items.forEach(function (item) {
+      createItem(item.id, item.value);
+    });
+
+    itemsContainer.classList.add("show");
+    clearBtn.classList.add("show");
+  }
+}
