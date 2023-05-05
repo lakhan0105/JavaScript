@@ -65,11 +65,10 @@ img {
   margin-bottom: 0.9rem;
 }
 
+/* btn styling  */
 .btns-container {
   margin-bottom: 0.8rem;
 }
-
-/* btn styling  */
 .btns-container {
   display: flex;
   justify-content: space-around;

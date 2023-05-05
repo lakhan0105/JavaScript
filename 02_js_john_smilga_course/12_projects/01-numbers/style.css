@@ -1,0 +1,64 @@
+/* Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap");
+
+/* CSS RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transition: 0.15s;
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+  background-color: #f8fafc;
+  padding: 5em;
+}
+
+.cards-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  min-width: 350px;
+  height: 200px;
+  padding: 1em 2em;
+  background-color: #fff;
+  margin-right: 2em;
+  border-radius: 0.3em;
+  box-shadow: 0px 1px 5px rgb(233, 232, 232);
+}
+
+.card:nth-child(1) {
+  border-bottom: 4px solid #f59e0b;
+}
+
+.card:nth-child(2) {
+  border-bottom: 4px solid #14b8a6;
+}
+
+.card:nth-child(3) {
+  border-bottom: 4px solid #a855f7;
+}
+
+.number {
+  font-size: 4rem;
+  font-weight: 800;
+}
+
+.text {
+  font-size: 1.5rem;
+}
+
+/* media queries  */
+@media only screen and (max-width: 900px) {
+  .cards-container {
+    flex-direction: column;
+  }
+
+  .card {
+    margin-bottom: 2em;
+  }
+}

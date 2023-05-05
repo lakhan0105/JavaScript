@@ -1,3 +1,4 @@
+/*
 // ARROW FUNCTIONS
 // no name, always expressions, assign to variable
 // no function keyword
@@ -74,3 +75,56 @@ console.log(greater3); // [4, 5, 6, 7, 8, 9]
 // Arrow function as a callback in EventListener
 const btn = document.querySelector(".btn");
 btn.addEventListener("click", () => console.log("clicked"));
+
+// ARROW FUNCTIONS - Object and 'this' --------------------------------------------------
+// reg funns : 'this' refers to the parent (left of the dot)
+// Arrow funcs : 'this' refres to it's current surrounding scope.
+const bob = {
+  firstName: "bob",
+  lastName: "vance",
+  fullName: function () {
+    console.log(this);
+    console.log(`My full name is: ${this.firstName} ${this.lastName}`);
+  },
+};
+bob.fullName(); // My full name is: bob vance
+
+const john = {
+  firstName: "john",
+  lastName: "kumar",
+  fullName: () => {
+    console.log(this);
+    console.log(`My full name is: ${this.firstName} ${this.lastName}`);
+  },
+};
+john.fullName(); // My full name is: undefined undefined
+
+// Let's say u have a settimeout inside the obj
+const bob = {
+  firstName: "bob",
+  lastName: "vance",
+  fullName: function () {
+    console.log(this);
+    // setTimeout(function () {
+    //   console.log(`My full name is: ${this.firstName} ${this.lastName}`);
+    //   console.log(this); // ppoints to window
+    // }, 2000);
+
+    // - {firstName: 'bob', lastName: 'vance', fullName: ƒ}
+    // - My full name is: undefined undefined
+    // - Note: when i call the settimeout, its showing undefined, cuz the this is pointing to the window (so use arrow function)
+
+    setTimeout(() => {
+      console.log(`My full name is: ${this.firstName} ${this.lastName}`);
+      console.log(this); // points to bob
+    }, 2000);
+  },
+};
+bob.fullName(); // My full name is: bob vance
+*/
+
+// DOUBT
+// ARROW functions while selecting the elements
+
+// DEFAULT PRAMAS AND HOISTING
+// DEFAULT PARAMS are the values that are passed as arg, if no arguments are passing in the function
