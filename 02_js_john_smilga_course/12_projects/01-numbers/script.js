@@ -10,7 +10,7 @@ function updateCount(el) {
   let increment = Math.ceil(value / 1000); // by how many values u want to increment
 
   const incrementNum = setInterval(() => {
-    //   increase the initialVal untill <= value set by user
+    //   increase the initialVal untill >= value set by user
     if (!(initialValue >= value)) {
       initialValue += increment;
       el.textContent = `${initialValue}+`;
